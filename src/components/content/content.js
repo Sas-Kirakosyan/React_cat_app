@@ -2,13 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cart from "../cart/cart";
 import { getImages } from "../../store/imagesSlice";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useParams,
-  useLocation,
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Content = () => {
   const dispatch = useDispatch();
@@ -20,8 +14,6 @@ const Content = () => {
   useEffect(() => {
     dispatch(getImages(page, id));
   }, [id]);
-
-  console.log("location", id);
   return (
     <div>
       <h2>Images</h2>
