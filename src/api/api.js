@@ -12,7 +12,7 @@ export const fetchImages = async (page, id) => {
   return response.data;
 };
 
-export const getImageByID = async (imageID) => {
-  const response = await axiosInstance.get(`/images/${imageID}`);
-  return response.data;
-};
+// export const getImageByID = async (imageID) => {
+//   const response = await axiosInstance.get(`/images/${imageID}`);
+//   return response.data;
+// };

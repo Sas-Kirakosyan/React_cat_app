@@ -8,7 +8,7 @@ import "./sidebar.scss";
 export default function Sidebar() {
   const dispatch = useDispatch();
   const categoryState = useSelector((state) => state.categories);
-  const { categories, isLoading, error } = categoryState;
+  const { categories, isLoading } = categoryState;
 
   useEffect(() => {
     dispatch(getCategories());
@@ -18,18 +18,22 @@ export default function Sidebar() {
     <div>
       <h3>Categories</h3>
       <div className="categoriesList">
-        {(isLoading && <div>Loading...</div>) ||
-          (categories &&
-            Array.isArray(categories) &&
-            categories.map((cat) => (
-              <NavLink
-                className="navlink"
-                key={cat.id}
-                to={`/category/${cat.id}`}
-              >
-                {cat.name.toUpperCase()}
-              </NavLink>
-            ))) || <p>No categories found</p>}
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          categories &&
+          Array.isArray(categories) &&
+          categories.map((cat, i) => (
+            <NavLink
+              activeClassName="active-link"
+              className="navlink"
+              key={cat.id}
+              to={`/category/${cat.id}`}
+            >
+              {cat.name.toUpperCase()}
+            </NavLink>
+          ))
+        )}
       </div>
     </div>
   );
